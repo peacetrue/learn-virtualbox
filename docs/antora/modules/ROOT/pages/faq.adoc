@@ -1,0 +1,63 @@
+= 常见问题
+
+== 待解决
+
+=== "https://formulae.brew.sh/api/formula.jws.json"
+
+xiayx@peacetruedeMacBook-Pro src % brew install git-lfs
+==> Downloading https://formulae.brew.sh/api/formula.jws.json
+curl: (28) Operation too slow. Less than 100 bytes/sec transferred the last 5 seconds
+
+每次执行 install 都会 Downloading ....
+
+
+=== VBoxManage: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+
+When: +
+VBoxManage guestcontrol mysql run --exe=/usr/bin/pwd --username=osboxes --password=osboxes.org
+
+What: +
+VBoxManage: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+VBoxManage: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee nsISupports
+VBoxManage: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== vboximg-mount: error: Failed to load the fuse library, rc=VERR_FILE_NOT_FOUND
+
+.see
+. https://www.virtualbox.org/ticket/19963
+. https://osxfuse.github.io/
+
+`osxfuse` has been succeeded by `macfuse` as of version 4.0.0.
+
+`brew uninstall macfuse`
+`brew install macfuse`
+`brew uninstall osxfuse`
+`brew install osxfuse`
+
+== 已解决
+
+=== 如何存放 vdi
+
+==== 压缩
+
+* 原始文件：UbuntuServer22.04Guest.vdi 4.2G
+* tar.gz 压缩文件：UbuntuServer22.04Guest.tar.gz 1.6G
+
+==== 选择存储库
+
+因为需要使用 GitHub Action，所以直接存放到 GitHub 中。
+
+参考 https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
+
+. brew install git-lfs
+----
+Update your git config to finish installation:
+# Update global git config
+$ git lfs install
+
+# Update system git config
+$ git lfs install --system
+
+$ git lfs track "UbuntuServer22.04Guest.tar.gz"
+$ git lfs untrack "*.vdi"
+----

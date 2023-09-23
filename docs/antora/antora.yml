@@ -1,0 +1,12 @@
+name: learn-virtualbox
+title: 学习 VirtualBox
+version: master
+asciidoc:
+  attributes:
+    numbered: '@'
+    website: https://peacetrue.github.io
+    app-group: com.github.peacetrue.learn
+    app-name: learn-virtualbox
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc

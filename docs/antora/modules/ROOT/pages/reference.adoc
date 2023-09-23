@@ -1,0 +1,17 @@
+= 参考指南
+
+== 源码
+
+== 配置
+
+. 虚拟机配置目录：$HOME/Library/VirtualBox
+. 客户机配置目录：~/VirtualBox\ VMs/
+
+== 附录
+
+. https://www.virtualbox.org/
+. https://ubuntu.com/
+. https://cdimage.ubuntu.com/
+. https://www.osboxes.org/ubuntu/#ubuntu-22-10-vbox
+. https://www.osboxes.org/ubuntu-server/
+. The username is "osboxes.org" and the password is "osboxes.org". We recommend that you use VirtualBox 5.2.

@@ -26,3 +26,4 @@ node_modules
 *.dmg
 *.vbox-extpack
 *.vdi
+!UbuntuServer22.04Guest.tar.gz

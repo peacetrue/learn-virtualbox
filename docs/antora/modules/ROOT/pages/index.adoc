@@ -1,0 +1,26 @@
+= 概述
+
+include::partial$shields.adoc[]
+//@formatter:off
+
+== 简介（What）
+
+{website}/{app-name}/[{app-name}] 用于记录学习 https://www.virtualbox.org/[VirtualBox^] 的过程。
+
+== 背景（Why）
+
+个人电脑为 macOS 系统，项目需要运行在 Linux 系统，所以需要一个虚拟机。
+
+// == 用法（How）
+
+== 参与者（Who）
+
+. peace(xiayouxue@hotmail.com)
+
+== 活动（When）
+
+初始提交于 2023-09-20，最近提交于 {docdate}。
+
+== 许可证（License）
+
+https://github.com/peacetrue/{app-name}/blob/master/LICENSE[Apache License 2.0^]
