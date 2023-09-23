@@ -1,0 +1,25 @@
+# GitHub 构建 Java 应用
+# ln $workingDir/peacetrue.github.io/docs/antora/modules/ROOT/examples/java-gradle-build.yml main.yml
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+#  build-ubuntu:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - run: make vbox.init
+  build-macos:
+    runs-on: macos-latest
+#    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3
+      - run: make vbox.init
+
