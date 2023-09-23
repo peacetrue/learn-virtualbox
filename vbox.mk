@@ -27,7 +27,7 @@ ifeq ($(wildcard $(VBOXMANAGE)),)
 $(VBOXMANAGE): $(BREW); brew install virtualbox -y
 endif
 
-# 安装扩展包
+# 安装扩展包，需要密码确认
 vbox.extpack.install: $(VBOXMANAGE) $(EXTPACK_SRC)
 	yes | vboxmanage extpack install $(word 2,$^)
 
@@ -40,5 +40,5 @@ $(BUILD)/%.name: $(BUILD)/%.txt
 	cat $< | grep -w Name | awk -F':' '{print $$NF}' | awk '{gsub(/^ +/, ""); print $$0}' > $@
 # Host Only Network management
 vbox.hostonlynet.add:
-	VBoxManage hostonlynet add --name=vboxnet0 --netmask=255.255.255.0 --lower-ip=192.168.150.3 --upper-ip=192.168.150.254 --enable
-vbox.init: vbox.extpack.install vbox.hostonlynet.add;
+	VBoxManage hostonlynet add --name=vboxnet1 --netmask=255.255.255.0 --lower-ip=192.168.150.3 --upper-ip=192.168.150.254 --enable
+vbox.init: $(VBOXMANAGE) vbox.hostonlynet.add;
