@@ -22,14 +22,21 @@ BREW:=/usr/local/bin/brew
 ifeq ($(wildcard $(BREW)),)
 $(BREW):; /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-$(info $(shell brew -v))
+$(info brew -v: $(shell brew -v))
 endif
 
 VBOXMANAGE:=/usr/local/bin/VBoxManage
 ifeq ($(wildcard $(VBOXMANAGE)),)
 $(VBOXMANAGE): $(BREW); brew install virtualbox -y
 else
-$(info $(shell vboxmanage -v))
+
+# GitHub Action 中 macOS 已经安装了 6.x 版本的 virtualbox，删除低版本，安装高版本
+ifeq ($(firstword $(shell vboxmanage -v)),6)
+$(info $(shell sudo rm -rf /Applications/VirtualBox.app))
+$(info $(shell brew install virtualbox -y))
+endif
+
+$(info VBoxManage -v: $(shell VBoxManage -v))
 endif
 
 # 安装扩展包，需要密码确认
