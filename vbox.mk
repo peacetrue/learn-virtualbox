@@ -1,7 +1,7 @@
 # 以下代码在 macOS 运行测试
 # https://www.virtualbox.org/manual/
 # https://www.virtualbox.org/manual/ch08.html 命令手册
-$(info "test makefile output is visible for github action")
+
 # 下载安装包到 SRC 目录
 VBOX_VERSION:=7.0.10
 VBOX_NAME:=VirtualBox-7.0.10a-158379-OSX.dmg
@@ -20,16 +20,15 @@ endif
 
 BREW:=/usr/local/bin/brew
 ifeq ($(wildcard $(BREW)),)
-$(BREW):
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew -v
+$(BREW):; /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+	$(info $(shell brew -v))
 endif
 VBOXMANAGE:=/usr/local/bin/VBoxManage
 ifeq ($(wildcard $(VBOXMANAGE)),)
-$(VBOXMANAGE): $(BREW)
-	brew info virtualbox
-	brew install virtualbox -y
-	VBoxManage -v
+$(VBOXMANAGE): $(BREW); brew install virtualbox -y
+else
+	$(info $(shell VBoxManage -v))
 endif
 
 # 安装扩展包，需要密码确认
