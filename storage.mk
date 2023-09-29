@@ -16,9 +16,6 @@ endif
 US_22.04.Guest:=$(SRC)/UbuntuServer22.04Guest.vdi
 ifeq ($(wildcard $(US_22.04.Guest)),)
 $(US_22.04.Guest): $(SRC)/UbuntuServer22.04Guest.tar.gz
-	pwd
-	ls -lha src
-	tar --help
 	tar -xzvf $<
 
 # 基于 osboxes vdi 改造。以下命令仅作为示例，实际需手动执行

@@ -21,6 +21,10 @@ guest.nic.load.%: $(BUILD)/hostonlynets.name
 guest.start.%:; vboxmanage startvm $* --type=headless
 
 # 配置免密登录
+ID_RSA:=$(HOME)/.ssh/id_rsa
+ifeq ($(wildcard $(ID_RSA)),)
+$(ID_RSA):; ssh-keygen -t rsa -b 2048;
+endif
 guest.ssh-copy-id.%: $(BUILD)/%.ip $(ID_RSA)
 	ssh-copy-id $(US_USER)@$(shell cat $<)
 $(BUILD)/%.ip: $(BUILD)/%.guestproperty
@@ -30,10 +34,7 @@ $(BUILD)/%.ip: $(BUILD)/%.guestproperty
 $(BUILD)/%.guestproperty:
 	while ! $(GUEST_PROPERTY) | grep '/VirtualBox/GuestInfo/Net'; do echo "waiting 2 seconds for guest ready..." && sleep 2; done && $(GUEST_PROPERTY) > $@;
 GUEST_PROPERTY=vboxmanage guestproperty enumerate $*
-ID_RSA:=$(HOME)/.ssh/id_rsa
-ifeq ($(wildcard $(ID_RSA)),)
-$(ID_RSA):; ssh-keygen -t rsa -b 2048;
-endif
+
 
 ssh.%: $(BUILD)/%.ip; ssh $(US_USER)@$(shell cat $<) || true
 
