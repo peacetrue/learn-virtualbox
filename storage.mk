@@ -12,10 +12,14 @@ $(US_22.04): /usr/local/bin/7zz /usr/local/bin/rename
 /usr/local/bin/rename:; brew install rename;
 endif
 
-# 基于 osboxes vdi 改造。以下命令仅作为示例，实际需手动执行
+# 从源码中解压 UbuntuServer22.04Guest.tar.gz
 US_22.04.Guest:=$(SRC)/UbuntuServer22.04Guest.vdi
 ifeq ($(wildcard $(US_22.04.Guest)),)
-$(US_22.04.Guest): $(US_22.04)
+$(US_22.04.Guest): $(SRC)/UbuntuServer22.04Guest.tar.gz
+	tar -xzvf $<
+
+# 基于 osboxes vdi 改造。以下命令仅作为示例，实际需手动执行
+$(US_22.04.Guest).bak: $(US_22.04)
 #	启用 Host-only Networks 网络的 IP4，用于通过主机连接到客户机
 	sudo sed -i.bak '/dhcp4: true/a\    enp0s8:\n      dhcp4:true' /etc/netplan/00-installer-config.yaml
 #	添加 Guest Addition，用于通过 guestproperty 获取 IP 地址
