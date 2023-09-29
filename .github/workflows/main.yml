@@ -21,5 +21,8 @@ jobs:
 #    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
-      - run: make vbox.init guest.init.test
+      - run: pwd
+      - run: ls -lah
+      - run: ls -lah src
+#      - run: make vbox.init guest.init.test
 
