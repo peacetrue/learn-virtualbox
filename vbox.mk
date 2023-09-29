@@ -23,7 +23,6 @@ ifeq ($(wildcard $(BREW)),)
 $(BREW):; /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
 $(info brew -v: $(shell brew -v))
-$(info brew info virtualbox: $(shell brew info virtualbox))
 endif
 
 VBOXMANAGE:=/usr/local/bin/VBoxManage
