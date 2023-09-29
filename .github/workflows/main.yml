@@ -20,8 +20,9 @@ jobs:
     runs-on: macos-latest
 #    runs-on: macos-13
     steps:
+      # https://github.com/actions/checkout
       - uses: actions/checkout@v3
-      - run: pwd
-      - run: ls -lah
-      - run: ls -lah src
-#      - run: make vbox.init guest.init.test
+        with:
+          # 默认不会检出大文件
+          lfs: true
+      - run: make vbox.init guest.init.test
