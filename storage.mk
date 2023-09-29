@@ -16,7 +16,8 @@ endif
 US_22.04.Guest:=$(SRC)/UbuntuServer22.04Guest.vdi
 ifeq ($(wildcard $(US_22.04.Guest)),)
 $(US_22.04.Guest): $(SRC)/UbuntuServer22.04Guest.tar.gz
-	ll -h $<
+	pwd
+	ls -lha src
 	tar --help
 	tar -xzvf $<
 
