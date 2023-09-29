@@ -22,13 +22,14 @@ BREW:=/usr/local/bin/brew
 ifeq ($(wildcard $(BREW)),)
 $(BREW):; /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-	$(info $(shell brew -v))
+$(info $(shell brew -v))
 endif
+
 VBOXMANAGE:=/usr/local/bin/VBoxManage
 ifeq ($(wildcard $(VBOXMANAGE)),)
 $(VBOXMANAGE): $(BREW); brew install virtualbox -y
 else
-	$(info $(shell VBoxManage -v))
+$(info $(shell vboxmanage -v))
 endif
 
 # 安装扩展包，需要密码确认
