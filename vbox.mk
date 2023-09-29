@@ -20,11 +20,16 @@ endif
 
 BREW:=/usr/local/bin/brew
 ifeq ($(wildcard $(BREW)),)
-$(BREW):; /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$(BREW):
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew -v
 endif
 VBOXMANAGE:=/usr/local/bin/VBoxManage
 ifeq ($(wildcard $(VBOXMANAGE)),)
-$(VBOXMANAGE): $(BREW); brew install virtualbox -y
+$(VBOXMANAGE): $(BREW)
+	brew info virtualbox
+	brew install virtualbox -y
+	VBoxManage -v
 endif
 
 # 安装扩展包，需要密码确认
