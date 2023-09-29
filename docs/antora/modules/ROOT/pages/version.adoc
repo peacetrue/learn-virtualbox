@@ -8,3 +8,6 @@
 . 准备 VDI
 . 安装客户机
 
+== vdi
+
+上传 vdi 压缩文件：src/UbuntuServer22.04Guest.tar.gz
