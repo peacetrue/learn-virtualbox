@@ -28,7 +28,7 @@ $(BUILD)/%.ip: $(BUILD)/%.guestproperty
 	cat $< | grep '/Net/1/V4/IP' | awk -F"'" '{print $$2}' > $@
 # 获取客户机属性，必须获取到网络信息，需要等到客户机扩展服务启动
 $(BUILD)/%.guestproperty:
-	while ! $(GUEST_PROPERTY) | grep '/VirtualBox/GuestInfo/Net'; do echo "waiting for guest ready..." && sleep 2; done && $(GUEST_PROPERTY) > $@;
+	while ! $(GUEST_PROPERTY) | grep '/VirtualBox/GuestInfo/Net'; do echo "waiting 2 seconds for guest ready..." && sleep 2; done && $(GUEST_PROPERTY) > $@;
 GUEST_PROPERTY=vboxmanage guestproperty enumerate $*
 ID_RSA:=$(HOME)/.ssh/id_rsa
 ifeq ($(wildcard $(ID_RSA)),)
