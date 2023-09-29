@@ -1,7 +1,7 @@
 # 以下代码在 macOS 运行测试
 # https://www.virtualbox.org/manual/
 # https://www.virtualbox.org/manual/ch08.html 命令手册
-
+$(info "test makefile output is visible for github action")
 # 下载安装包到 SRC 目录
 VBOX_VERSION:=7.0.10
 VBOX_NAME:=VirtualBox-7.0.10a-158379-OSX.dmg
