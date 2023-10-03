@@ -2,6 +2,14 @@
 
 == 源码
 
+* docs：文档目录
+* src：vdi 存储目录
+* Makefile：make 构建脚本
+* build.common.mk：通用构建脚本
+* vbox.mk：虚拟机相关脚本
+* storage.mk：存储相关脚本
+* guest.mk：客户机相关脚本
+
 == 配置
 
 . 虚拟机配置目录：$HOME/Library/VirtualBox

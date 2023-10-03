@@ -11,7 +11,21 @@ include::partial$shields.adoc[]
 
 个人电脑为 macOS 系统，项目需要运行在 Linux 系统，所以需要一个虚拟机。
 
-// == 用法（How）
+== 用法（How）
+
+通过脚本创建虚拟机和客户机：
+
+[source%nowrap,bash,subs="specialchars,attributes"]
+----
+# 检出资源库
+git clone https://github.com/peacetrue/{app-name} -b vdi
+# 安装虚拟机
+make vbox.init
+# 安装 test 客户机
+make guest.init.test
+----
+
+WARNING: 注意 Makefile 脚本仅支持 macOS 系统。
 
 == 参与者（Who）
 

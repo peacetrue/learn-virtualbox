@@ -1,2 +1,20 @@
 = 快速入门
 
+== 虚拟机脚本化
+
+通过 Makefile 脚本创建虚拟机和客户机：
+
+[source%nowrap,bash,subs="specialchars,attributes"]
+----
+# 检出资源库
+git clone https://github.com/peacetrue/{app-name} -b vdi
+# 安装虚拟机
+make vbox.init
+# 安装 test 客户机
+make guest.init.test
+----
+
+关于分支含义可参考 xref:version.adoc[]。
+
+WARNING: 注意 Makefile 脚本仅支持 macOS 系统。
+

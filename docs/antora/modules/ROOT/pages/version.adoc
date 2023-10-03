@@ -4,11 +4,11 @@
 
 == master
 
-最新内容分支。先在 master 中开发完成，然后再创建对应分支。
+master 为最新分支。先在 master 中完成开发，然后再创建对应分支。
 
 == vdi
 
-vdi 分支中含有 UbuntuServer22.04Guest.tar.gz（一个 vdi 的压缩包 1.6 G），因为此文件太大所以单独使用一个分支；其他内容与最新分支同步。
+vdi 分支中含有 UbuntuServer22.04Guest.tar.gz（一个 vdi 的压缩包 1.6 G），因为此文件太大所以单独使用一个分支；其他内容与最新分支一致。
 
 == 1.0.0
 
