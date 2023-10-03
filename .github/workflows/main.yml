@@ -1,5 +1,5 @@
 # GitHub 构建 Java 应用
-# ln $workingDir/peacetrue.github.io/docs/antora/modules/ROOT/examples/java-gradle-build.yml main.yml
+
 name: build
 
 on:
