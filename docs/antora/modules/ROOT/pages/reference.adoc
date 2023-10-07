@@ -1,5 +1,7 @@
 = 参考指南
 
+详情参考 VirtualBox.graffle，其中包含详细的构建逻辑。
+
 == 源码
 
 * docs：文档目录
@@ -22,4 +24,3 @@
 . https://cdimage.ubuntu.com/
 . https://www.osboxes.org/ubuntu/#ubuntu-22-10-vbox
 . https://www.osboxes.org/ubuntu-server/
-. The username is "osboxes.org" and the password is "osboxes.org". We recommend that you use VirtualBox 5.2.
