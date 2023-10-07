@@ -9,9 +9,11 @@ include::partial$shields.adoc[]
 
 == 背景（Why）
 
-个人电脑为 macOS 系统，项目需要运行在 Linux 系统，所以需要一个虚拟机。
+个人电脑为 macOS 系统，项目需要运行在 Linux 系统，所以需要使用虚拟机。
 
-// == 用法（How）
+== 用法（How）
+
+参考 xref:start.adoc[]。
 
 == 参与者（Who）
 

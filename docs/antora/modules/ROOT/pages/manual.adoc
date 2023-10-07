@@ -1,2 +1,16 @@
 = 用户手册
 
+== 虚拟机
+
+. 初始化虚拟机：`make vbox.init`
+
+NOTE: 此生命周期不完整。
+
+== 客户机
+
+. 初始化 test 客户机：`make guest.init.test`
+. 启动 test 客户机：`make guest.start.test`
+. 登录 test 客户机：`make guest.ssh.test`
+. 登录 test 客户机并转至工作目录：`make guest.cwd.test`
+. 关闭 test 客户机：`make guest.shutdown.test`
+. 销毁 test 客户机：`make guest.clean.test`

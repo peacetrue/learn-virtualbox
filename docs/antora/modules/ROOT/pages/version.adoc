@@ -2,12 +2,26 @@
 
 :numbered!: ''
 
+== master
+
+master 为最新分支。先在 master 中完成开发，然后再创建对应分支。
+
+== vdi
+
+vdi 分支中含有 UbuntuServer22.04Guest.tar.gz（一个 vdi 的压缩包 1.6 G），因为此文件太大所以单独使用一个分支；其他内容与最新分支一致。
+
 == 1.0.0
 
 . 安装虚拟机
 . 准备 VDI
 . 安装客户机
 
-== vdi
+== 1.1.0
 
-上传 vdi 压缩文件：src/UbuntuServer22.04Guest.tar.gz
+. 测试基准改为生命周期测试
+. 快捷登录客户机：make guest.cwd.%
+. 直接在宿主机中操作客户机而不用登录到客户机
+
+== 下个版本
+
+. ...

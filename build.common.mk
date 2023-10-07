@@ -14,6 +14,7 @@ mkdir: mkdir/$(BUILD);
 #$(BUILD): mkdir;#此写法导致依赖于 $(BUILD) 的目标每次都触发 mkdir -p build，当文件名与目标名相同时的选择策略为何？
 $(BUILD):; mkdir -p $(BUILD) #此写法能触发文件缓存
 #$(BUILD)/%: mkdir/$(BUILD)/%; #此目标导致 $(BUILD)/%.txt 类写法全部失效
+$(SRC):; mkdir -p $(SRC) # 通常生成的文件存储在 BUILD 目录中，但 vdi 需要存储在 SRC 目录中
 
 #如果是删除 build 目录，使用 -f 强制删除
 rm/%:; rm -r$(if $(filter $(build)%,$*),f,) $*
@@ -23,9 +24,19 @@ clean/%: rm/$(BUILD)/%;
 
 # 从源目录拷贝到目标目录，统一依赖文件的位置
 # EXTERNAL_SRC?=$(SRC)，通过 make 外部赋值会替换内部值，此处需要保留 SRC，此命令可能覆盖形如 $(BUILD)/%.txt 的命令
-$(foreach item,$(SRC) $(EXTERNAL_SRC),$(eval $(BUILD)/%: $(item)/% $(BUILD); cp $$< $$@))
+#$(foreach item,$(SRC) $(EXTERNAL_SRC),$(eval $(BUILD)/%: $(item)/% $(BUILD); cp $$< $$@))
+$(foreach item, $(EXTERNAL_SRC),$(eval $(BUILD)/%: $(item)/% $(BUILD); cp $$< $$@))
 DEBUG_VARS+=EXTERNAL_SRC
 
 # 以 .cache 结尾的文件为缓存文件，实际无用途，表示该目标已执行过，无需再执行
 #$(BUILD)/%.cache: $(BUILD)/%
 	#touch $@
+
+# 使用超级管理员执行。参数列表：1=密码
+SUDO=/usr/bin/echo '$(1)' | /usr/bin/sudo -S
+# SUDO=sudo -S <<< $(US_PWD)
+
+# 从文件的初始状态开始：备份文件/恢复文件
+# 文件重置基准：备份文件存在，从备份文件恢复内容到原始文件；否则根据原始文件创建备份文件。参数列表：1=文件位置
+FILE_REBASE=if [ -f $(1).bak ]; then sudo cp $(1).bak $(1); else sudo cp $(1) $(1).bak; fi
+file_rebase/%:; $(call FILE_REBASE,$*)

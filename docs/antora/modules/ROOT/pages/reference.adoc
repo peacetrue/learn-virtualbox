@@ -1,6 +1,16 @@
 = 参考指南
 
+详情参考 VirtualBox.graffle，其中包含详细的构建逻辑。
+
 == 源码
+
+* docs：文档目录
+* src：vdi 存储目录
+* Makefile：make 构建脚本
+* build.common.mk：通用构建脚本
+* vbox.mk：虚拟机相关脚本
+* storage.mk：存储相关脚本
+* guest.mk：客户机相关脚本
 
 == 配置
 
@@ -14,4 +24,3 @@
 . https://cdimage.ubuntu.com/
 . https://www.osboxes.org/ubuntu/#ubuntu-22-10-vbox
 . https://www.osboxes.org/ubuntu-server/
-. The username is "osboxes.org" and the password is "osboxes.org". We recommend that you use VirtualBox 5.2.

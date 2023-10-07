@@ -1,2 +1,21 @@
 = 快速入门
 
+== 虚拟机脚本化
+
+通过脚本创建虚拟机和客户机：
+
+[source%nowrap,bash,subs="specialchars,attributes"]
+----
+# 检出资源库
+git clone https://github.com/peacetrue/{app-name} -b vdi
+# 执行虚拟机生命周期测试
+make vbox.lifecycle.test
+# 执行客户机生命周期测试
+make guest.lifecycle.test
+----
+
+WARNING: 注意 Makefile 脚本当前仅在 macOS 系统中测试通过。
+
+关于分支含义可参考 xref:version.adoc[]。
+
+
