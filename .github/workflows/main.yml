@@ -20,6 +20,10 @@ jobs:
     runs-on: macos-latest
 #    runs-on: macos-13
     steps:
+      # https://github.com/actions/checkout
       - uses: actions/checkout@v3
+        with:
+          # 默认不会检出大文件
+          lfs: true
       - run: make vbox.lifecycle.test guest.lifecycle.test
 
